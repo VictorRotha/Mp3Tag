@@ -1,0 +1,18 @@
+# create track numbers (true/false)
+
+tracks=false
+
+# tags to change, followed by one or more values
+# if only one value is provided, it will be used for all files
+# tags are : artist, title, album
+
+tag=artist
+Iggy Pop
+
+tag=album
+TheStooges
+
+tag=title
+No Fun
+1969
+I wanna be your dog
