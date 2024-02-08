@@ -16,3 +16,9 @@ tag=title
 No Fun
 1969
 I wanna be your dog
+
+tag=albumartist
+Various
+
+tag=date
+00000
