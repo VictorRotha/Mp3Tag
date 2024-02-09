@@ -3,6 +3,18 @@ import mutagen as mut
 from mutagen.id3 import ID3, APIC
 
 
+def find_cover(directory):
+
+    covers = [os.path.join(directory, f) for f in os.listdir(directory)
+              if f.endswith(".jpg") or f.endswith(".png") or f.endswith(".jpeg")]
+
+    if len(covers) == 0:
+        print('ERROR: no cover found')
+        quit(0)
+
+    return covers[0]
+
+
 def apply_cover(audio_files, cover):
     with open(cover, 'rb') as albumart:
         data = albumart.read()
@@ -37,14 +49,7 @@ if __name__ == '__main__':
         print('ERROR: no audiofiles found')
         quit(0)
 
-    covers = [os.path.join(mp3directory, f) for f in os.listdir(mp3directory)
-              if f.endswith(".jpg") or f.endswith(".png") or f.endswith(".jpeg")]
-
-    if len(covers) == 0:
-        print('ERROR: no cover found')
-        quit(0)
-
-    cover = covers[0]
+    cover = find_cover(mp3directory)
 
     print("Cover ", cover)
 
