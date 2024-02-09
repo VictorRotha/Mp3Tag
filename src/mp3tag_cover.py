@@ -7,9 +7,14 @@ def apply_cover(audio_files, cover):
     with open(cover, 'rb') as albumart:
         data = albumart.read()
 
+    if cover.endswith('.png'):
+        mime_type = 'image/png'
+    else:
+        mime_type = 'image/jpg'
+
     for f in audio_files:
         audio = mut.id3.ID3(f)
-        audio.setall('APIC', [APIC(mime='image/png',
+        audio.setall('APIC', [APIC(mime=mime_type,
                                    encoding=3,
                                    type=3,
                                    desc=u'desc',
@@ -24,8 +29,6 @@ if __name__ == '__main__':
     mp3directory = os.getcwd()
 
     print('Directory:', mp3directory)
-
-    a = os.path.join(mp3directory, 'f')
 
     mp3files = [os.path.join(mp3directory, f) for f in os.listdir(mp3directory) if f.endswith(".mp3")]
     mp3files.sort()
